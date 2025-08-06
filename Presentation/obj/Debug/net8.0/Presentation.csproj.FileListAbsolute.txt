@@ -52,3 +52,4 @@ C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\refint\
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.pdb
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\ref\Presentation.dll
+C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.sourcelink.json

@@ -24,11 +24,6 @@ public class AccountController : ControllerBase
 
 public class TransferRequest
 {
-    public TransferRequest(int fromAccountId)
-    {
-        FromAccountId = fromAccountId;
-    }
-
     public int FromAccountId { get; set; }
 
     public int ToAccountId { get; set; }

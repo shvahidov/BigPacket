@@ -20,4 +20,3 @@
 #echo 'Husky.Net is awesome!'
 
 dotnet format --verify-no-changes
-dotnet build

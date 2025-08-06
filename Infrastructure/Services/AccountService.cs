@@ -23,10 +23,14 @@ public class AccountService : IAccountService
             var to = await _context.Accounts.FirstOrDefaultAsync(a => a.Id == toAccountId);
 
             if (from == null || to == null)
+            {
                 throw new Exception("One or both accounts not found");
+            }
 
             if (from.Balance < amount)
+            {
                 throw new Exception("Insufficient funds");
+            }
 
             from.Balance -= amount;
             to.Balance += amount;

@@ -1,4 +1,5 @@
 using Application.Interfaces;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers;
@@ -20,13 +21,4 @@ public class AccountController : ControllerBase
         await _accountService.TransferAsync(request.FromAccountId, request.ToAccountId, request.Amount);
         return Ok("Transfer successful");
     }
-}
-
-public class TransferRequest
-{
-    public int FromAccountId { get; set; }
-
-    public int ToAccountId { get; set; }
-
-    public decimal Amount { get; set; }
 }

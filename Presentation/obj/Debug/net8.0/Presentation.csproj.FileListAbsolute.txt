@@ -1,8 +1,3 @@
-C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.csproj.AssemblyReference.cache
-C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.AssemblyInfoInputs.cache
-C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.AssemblyInfo.cs
-C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.csproj.CoreCompileInputs.cache
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\bin\Debug\net8.0\appsettings.json
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\bin\Debug\net8.0\Presentation.exe
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\bin\Debug\net8.0\Presentation.deps.json
@@ -36,8 +31,14 @@ C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\bin\Debug\net8.0\Infrast
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\bin\Debug\net8.0\Application.pdb
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\bin\Debug\net8.0\Domain.pdb
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\bin\Debug\net8.0\Infrastructure.pdb
+C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.csproj.AssemblyReference.cache
+C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.AssemblyInfoInputs.cache
+C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.AssemblyInfo.cs
+C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.csproj.CoreCompileInputs.cache
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.sourcelink.json
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\staticwebassets\msbuild.Presentation.Microsoft.AspNetCore.StaticWebAssets.props
@@ -52,4 +53,3 @@ C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\refint\
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.pdb
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\ref\Presentation.dll
-C:\Users\Kodirov.I\RiderProjects\BigPacket\Presentation\obj\Debug\net8.0\Presentation.sourcelink.json

@@ -5,8 +5,8 @@ C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\Domain.Genera
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\Domain.sourcelink.json
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\Domain.dll
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\ref\Domain.dll
-C:\Users\Kodirov.I\RiderProjects\BigPacket\Domain\obj\Debug\net8.0\Domain.sourcelink.json

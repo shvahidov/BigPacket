@@ -19,4 +19,8 @@
       <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <EditorConfigFiles Remove=".editorconfig" />
+    </ItemGroup>
+
 </Project>

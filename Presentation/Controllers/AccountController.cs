@@ -24,14 +24,16 @@ public class AccountController : ControllerBase
 
 public class TransferRequest
 {
-    public TransferRequest(int fromAccountId)
+    public TransferRequest(int fromAccountId, int toAccountId, decimal amount)
     {
         FromAccountId = fromAccountId;
+        ToAccountId = toAccountId;
+        Amount = amount;
     }
 
-    public int FromAccountId { get; set; }
+    public int FromAccountId { get; }
 
-    public int ToAccountId { get; set; }
+    public int ToAccountId { get; }
 
     public decimal Amount { get; set; }
 }

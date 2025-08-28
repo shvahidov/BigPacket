@@ -18,7 +18,14 @@ public class AccountController : ControllerBase
     [HttpPost("transfer")]
     public async Task<IActionResult> Transfer([FromBody] TransferRequest request)
     {
-        await _accountService.TransferAsync(request.FromAccountId, request.ToAccountId, request.Amount);
-        return Ok("Transfer successful");
+        try
+        {
+            await _accountService.TransferAsync(request.FromAccountId, request.ToAccountId, request.Amount);
+            return Ok(new { message = "Перевод успешно выполнен" });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
     }
 }

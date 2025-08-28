@@ -2,3 +2,5 @@
 dotnet_diagnostic.SA1600.severity = none
 dotnet_diagnostic.SA1633.severity = none
 dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1602.severity = none
+dotnet_diagnostic.SA1413.severity = none

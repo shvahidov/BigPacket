@@ -31,4 +31,9 @@
       <EditorConfigFiles Remove=".editorconfig" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Persistence\Configurations\" />
+      <Folder Include="Services\" />
+    </ItemGroup>
+
 </Project>

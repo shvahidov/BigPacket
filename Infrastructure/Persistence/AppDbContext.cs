@@ -14,8 +14,6 @@ public sealed class AppDbContext : DbContext
         Database.EnsureCreated();
     }
 
-    public DbSet<Account> Accounts { get; set; }
-
     public DbSet<Month> Months { get; set; }
 
     public DbSet<Packet> Packets { get; set; }

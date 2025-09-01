@@ -1,10 +1,5 @@
 ﻿using System.Text;
-using Application.Interfaces;
-using Application.Validators;
-using FluentValidation.AspNetCore;
 using Infrastructure.Persistence;
-
-// using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -16,31 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
-// Сервисы
-// builder.Services.AddScoped<IAccountService, AccountService>();
-
-// Контроллеры
-// builder.Services.AddControllers();
-#pragma warning disable CS0618 // Type or member is obsolete
-builder.Services.AddControllers()
-    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
-#pragma warning restore CS0618 // Type or member is obsolete
-#pragma warning disable CS0618 // Type or member is obsolete
-builder.Services.AddControllers()
-    .AddFluentValidation(fv =>
-#pragma warning disable CS0618 // Type or member is obsolete
-        fv.RegisterValidatorsFromAssemblyContaining<AccountValidator>());
-#pragma warning restore CS0618 // Type or member is obsolete
-#pragma warning restore CS0618 // Type or member is obsolete
-#pragma warning disable CS0618 // Type or member is obsolete
-builder.Services.AddControllers()
-    .AddFluentValidation(fv =>
-    {
-#pragma warning disable CS0618 // Type or member is obsolete
-        fv.RegisterValidatorsFromAssemblyContaining<TransferRequestValidator>();
-#pragma warning restore CS0618 // Type or member is obsolete
-    });
-#pragma warning restore CS0618 // Type or member is obsolete
 // Подключаем Swagger + Авторизацию
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -104,14 +74,13 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bank API v1");
-    c.RoutePrefix = string.Empty; // 👉 теперь Swagger открывается сразу на https://localhost:5001/
+    c.RoutePrefix = string.Empty;
 });
 
-// Подключаем Middleware
 app.UseHttpsRedirection();
 
-app.UseAuthentication(); // проверка токена
-app.UseAuthorization();  // проверка прав
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

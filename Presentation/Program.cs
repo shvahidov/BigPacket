@@ -3,7 +3,8 @@ using Application.Interfaces;
 using Application.Validators;
 using FluentValidation.AspNetCore;
 using Infrastructure.Persistence;
-using Infrastructure.Services;
+
+// using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -16,7 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
 // Сервисы
-builder.Services.AddScoped<IAccountService, AccountService>();
+// builder.Services.AddScoped<IAccountService, AccountService>();
 
 // Контроллеры
 // builder.Services.AddControllers();

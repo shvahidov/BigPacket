@@ -1,23 +1,32 @@
 namespace Domain.Entities;
 
-using Domain.Enums;
-
 public class Transaction
 {
-    public int Id { get; set; }
+    public Guid TransactionId { get; set; }
 
-    public int FromAccountId { get; set; }
+    public Guid PacketId { get; set; }
 
-    public int ToAccountId { get; set; }
+    public Guid PacketTypeId { get; set; }
 
-    public decimal Amount { get; set; }
+    public Guid UserId { get; set; }
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public Guid TransactionStatusId { get; set; }
 
-    public TransactionStatus Status { get; set; }
+    public required string Response { get; set; }
 
-    // Навигация
-    public Account? FromAccount { get; set; }
+    public DateTime TradedAt { get; set; }
 
-    public Account? ToAccount { get; set; }
+    public DateTime UpdatedAt { get; set; }
+
+    public required string PhoneNumber { get; set; }
+
+    public required string ParamsJson { get; set; }
+
+    public required TransactionStatus TransactionStatus { get; set; }
+
+    public required Packet Packet { get; set; }
+
+    public required PacketType PacketType { get; set; }
+
+    public required User User { get; set; }
 }

@@ -17,4 +17,8 @@
       <EditorConfigFiles Remove=".editorconfig" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Enums\" />
+    </ItemGroup>
+
 </Project>

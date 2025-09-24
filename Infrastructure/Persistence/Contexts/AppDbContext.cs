@@ -1,17 +1,15 @@
-using System.Transactions;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Transaction = Domain.Entities.Transaction;
 using TransactionStatus = Domain.Entities.TransactionStatus;
 
-namespace Infrastructure.Persistence;
+namespace Infrastructure.Persistence.Contexts;
 
 public sealed class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     {
-        Database.EnsureCreated();
     }
 
     public DbSet<Month> Months { get; set; }

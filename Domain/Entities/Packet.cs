@@ -14,7 +14,7 @@ public class Packet
 
     public Guid PacketStatusId { get; set; }
 
-    public required PacketType PacketType { get; set; }
+    public PacketType? PacketType { get; set; }
 
-    public required PacketStatus PacketStatus { get; set; }
+    public PacketStatus? PacketStatus { get; set; }
 }

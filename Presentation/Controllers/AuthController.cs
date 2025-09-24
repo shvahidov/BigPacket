@@ -1,3 +1,4 @@
+/*
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -53,3 +54,4 @@ public class AuthController : ControllerBase
         return new JwtSecurityTokenHandler().WriteToken(tokenOptions);
     }
 }
+*/

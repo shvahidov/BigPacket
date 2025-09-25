@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Application.Interfaces;
+using Application.Services;
 using Infrastructure.Persistence.Contexts;
 using Infrastructure.Services.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,7 +17,9 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
+// Сервисы
 builder.Services.AddScoped<IPacketRepository, PacketRepository>();
+builder.Services.AddScoped<PacketService>();
 
 // Swagger + JWT
 builder.Services.AddEndpointsApiExplorer();

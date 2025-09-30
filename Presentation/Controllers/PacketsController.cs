@@ -1,5 +1,6 @@
 using Application.DTOs;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers;
@@ -9,10 +10,13 @@ namespace Presentation.Controllers;
 public class PacketsController(PacketService service) : ControllerBase
 {
     [HttpGet]
+    [Authorize(Policy = "AdminOnly")]
+
     public async Task<IActionResult> GetAll() =>
         Ok(await service.GetAllAsync());
 
     [HttpGet("{id}")]
+    [Authorize(Policy = "AdminOnly")]
     public async Task<IActionResult> GetById(Guid id)
     {
         var packet = await service.GetByIdAsync(id);
@@ -20,6 +24,7 @@ public class PacketsController(PacketService service) : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = "CanCreatePackets")]
     public async Task<IActionResult> Create(CreatePacketDto dto)
     {
         var packet = await service.CreatePacketAsync(dto);
@@ -27,6 +32,7 @@ public class PacketsController(PacketService service) : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Policy = "AdminOnly")]
     public async Task<IActionResult> Update(Guid id, CreatePacketDto dto)
     {
         var packet = await service.UpdatePacketAsync(id, dto);
@@ -34,6 +40,7 @@ public class PacketsController(PacketService service) : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Policy = "AdminOnly")]
     public async Task<IActionResult> Delete(Guid id)
     {
         await service.DeleteAsync(id);

@@ -20,6 +20,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Сервисы
 builder.Services.AddScoped<IPacketRepository, PacketRepository>();
 builder.Services.AddScoped<PacketService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<UserService>();
 
 // Swagger + JWT
 builder.Services.AddEndpointsApiExplorer();
@@ -75,7 +77,14 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanCreatePackets", policy =>
+        policy.RequireRole("Admin", "User"));
+
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireRole("Admin"));
+});
 
 var app = builder.Build();
 

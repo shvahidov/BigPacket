@@ -1,5 +1,5 @@
+using Application.DTOs;
 using Application.Services;
-using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,8 +15,11 @@ public class UsersController(UserService service) : ControllerBase
         Ok(await service.GetAllAsync());
 
     [HttpPost]
-    public async Task<IActionResult> Create(User user) =>
-        Ok(await service.CreateAsync(user));
+    public async Task<IActionResult> Create(CreateUserDto dto)
+    {
+        var createdUser = await service.CreateAsync(dto);
+        return CreatedAtAction(nameof(GetAll), new { id = createdUser.UserId }, createdUser);
+    }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id) =>

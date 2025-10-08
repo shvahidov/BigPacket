@@ -18,5 +18,5 @@ public class User
 
     public Guid? ParentId { get; set; }
 
-    public required Role Role { get; set; }
+    public required Role? Role { get; set; }
 }

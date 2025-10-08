@@ -22,6 +22,7 @@ builder.Services.AddScoped<IPacketRepository, PacketRepository>();
 builder.Services.AddScoped<PacketService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
 // Swagger + JWT
 builder.Services.AddEndpointsApiExplorer();

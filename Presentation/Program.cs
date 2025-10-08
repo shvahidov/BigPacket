@@ -23,6 +23,7 @@ builder.Services.AddScoped<PacketService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddHttpContextAccessor();
 
 // Swagger + JWT
 builder.Services.AddEndpointsApiExplorer();

@@ -1,6 +1,9 @@
+using System.Security.Claims;
 using Application.DTOs;
 using Application.Interfaces;
 using Domain.Entities;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace Application.Services;
 
@@ -8,11 +11,14 @@ public class UserService
 {
     private readonly IUserRepository _repo;
     private readonly IRoleRepository _roleRepo;
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly PasswordHasher<User> _hasher = new();
 
-    public UserService(IUserRepository repo, IRoleRepository roleRepo)
+    public UserService(IUserRepository repo, IRoleRepository roleRepo, IHttpContextAccessor httpContextAccessor)
     {
         _repo = repo;
         _roleRepo = roleRepo;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public Task<List<User>> GetAllAsync() => _repo.GetAllAsync();
@@ -25,17 +31,20 @@ public class UserService
             throw new Exception("Роль 'User' не найдена");
         }
 
+        var adminIdString = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        Guid? adminId = string.IsNullOrEmpty(adminIdString) ? null : Guid.Parse(adminIdString);
+
         var user = new User
         {
-            UserId = default,
+            UserId = Guid.NewGuid(),
             UserName = dto.UserName,
             LoginName = dto.LoginName,
-            Password = dto.Password,
+            Password = _hasher.HashPassword(null!, dto.Password),
             RoleId = role.RoleId,
             PhoneNumber = dto.PhoneNumber,
             Info = dto.Info,
-            ParentId = null,
-            Role = null,
+            ParentId = adminId,
+            Role = role,
         };
 
         await _repo.AddAsync(user);

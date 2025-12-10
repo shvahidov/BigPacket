@@ -11,4 +11,6 @@ public interface IUserRepository
     Task AddAsync(User user);
 
     Task DeleteAsync(User user);
+
+    Task<User?> GetByLoginAsync(string login);
 }

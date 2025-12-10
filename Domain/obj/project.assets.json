@@ -15,6 +15,19 @@
           }
         }
       },
+      "MediatR/8.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/MediatR.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/MediatR.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/8.0.20": {
         "type": "package",
         "compile": {
@@ -204,6 +217,24 @@
         "lib/net8.0/Ardalis.SmartEnum.xml",
         "lib/netstandard2.0/Ardalis.SmartEnum.dll",
         "lib/netstandard2.0/Ardalis.SmartEnum.xml"
+      ]
+    },
+    "MediatR/8.1.0": {
+      "sha512": "KJFnA0MV83bNOhvYbjIX1iDykhwFXoQu0KV7E1SVbNA/CmO2I7SAm2Baly0eS7VJ2GwlmStLajBfeiNgTpvYzQ==",
+      "type": "package",
+      "path": "mediatr/8.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gradient_128x128.png",
+        "lib/net461/MediatR.dll",
+        "lib/net461/MediatR.xml",
+        "lib/netstandard2.0/MediatR.dll",
+        "lib/netstandard2.0/MediatR.xml",
+        "lib/netstandard2.1/MediatR.dll",
+        "lib/netstandard2.1/MediatR.xml",
+        "mediatr.8.1.0.nupkg.sha512",
+        "mediatr.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/8.0.20": {
@@ -552,6 +583,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Ardalis.SmartEnum >= 8.2.0",
+      "MediatR >= 8.1.0",
       "Microsoft.Extensions.Identity.Core >= 8.0.20",
       "StyleCop.Analyzers >= 1.2.0-beta.556"
     ]
@@ -602,6 +634,10 @@
           "Ardalis.SmartEnum": {
             "target": "Package",
             "version": "[8.2.0, )"
+          },
+          "MediatR": {
+            "target": "Package",
+            "version": "[8.1.0, )"
           },
           "Microsoft.Extensions.Identity.Core": {
             "target": "Package",

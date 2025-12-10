@@ -1,49 +1,37 @@
-using Application.DTOs;
-using Application.Services;
-using Microsoft.AspNetCore.Authorization;
+using Application.Features.Packets.Commands;
+using Application.Features.Packets.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.CustomAttributes;
 
 namespace Presentation.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class PacketsController(PacketService service) : ControllerBase
+public class PacketsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    [Authorize(Policy = "AdminOnly")]
-
-    public async Task<IActionResult> GetAll() =>
-        Ok(await service.GetAllAsync());
+    [Role("Admin")]
+    public async Task<IActionResult> GetAll()
+        => Ok(await mediator.Send(new GetAllPacketsQuery()));
 
     [HttpGet("{id}")]
-    [Authorize(Policy = "AdminOnly")]
+    [Role("Admin")]
     public async Task<IActionResult> GetById(Guid id)
-    {
-        var packet = await service.GetByIdAsync(id);
-        return packet is null ? NotFound() : Ok(packet);
-    }
+        => Ok(await mediator.Send(new GetPacketByIdQuery(id)));
 
     [HttpPost]
-    [Authorize(Policy = "CanCreatePackets")]
-    public async Task<IActionResult> Create(CreatePacketDto dto)
-    {
-        var packet = await service.CreatePacketAsync(dto);
-        return CreatedAtAction(nameof(GetById), new { id = packet.PacketId }, packet);
-    }
+    [Roles("User", "Admin")]
+    public async Task<IActionResult> Create(CreatePacketCommand command)
+        => Ok(await mediator.Send(command));
 
     [HttpPut("{id}")]
-    [Authorize(Policy = "AdminOnly")]
-    public async Task<IActionResult> Update(Guid id, CreatePacketDto dto)
-    {
-        var packet = await service.UpdatePacketAsync(id, dto);
-        return packet is null ? NotFound() : NoContent();
-    }
+    [Role("Admin")]
+    public async Task<IActionResult> Update(Guid id, UpdatePacketCommand command)
+        => Ok(await mediator.Send(command with { Id = id }));
 
     [HttpDelete("{id}")]
-    [Authorize(Policy = "AdminOnly")]
+    [Role("Admin")]
     public async Task<IActionResult> Delete(Guid id)
-    {
-        await service.DeleteAsync(id);
-        return NoContent();
-    }
+        => Ok(await mediator.Send(new DeletePacketCommand(id)));
 }

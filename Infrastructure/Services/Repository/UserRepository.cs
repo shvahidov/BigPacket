@@ -31,4 +31,10 @@ public class UserRepository : IUserRepository
         _context.Users.Remove(user);
         await _context.SaveChangesAsync();
     }
+
+    public Task<User?> GetByLoginAsync(string login)
+    {
+        return _context.Users.Include(u => u.Role)
+            .FirstOrDefaultAsync(u => u.LoginName == login);
+    }
 }

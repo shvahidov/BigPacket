@@ -13,4 +13,8 @@ public interface IPacketRepository
     Task UpdateAsync(Packet packet);
 
     Task DeleteAsync(Guid id);
+
+    Task<List<Packet>> GetActivePacketsAsync();
+
+    Task SaveChangesAsync();
 }

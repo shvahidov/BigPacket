@@ -1,30 +1,30 @@
 using System.Security.Claims;
-using Application.DTOs;
 using Application.Interfaces;
 using Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 
-namespace Application.Services;
+namespace Application.Features.Users.Commands;
 
-public class UserService
+public class CreateUserHandler : IRequestHandler<CreateUserCommand, User>
 {
     private readonly IUserRepository _repo;
     private readonly IRoleRepository _roleRepo;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly PasswordHasher<User> _hasher = new();
 
-    public UserService(IUserRepository repo, IRoleRepository roleRepo, IHttpContextAccessor httpContextAccessor)
+    public CreateUserHandler(IUserRepository repo, IRoleRepository roleRepo, IHttpContextAccessor httpContextAccessor)
     {
         _repo = repo;
         _roleRepo = roleRepo;
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public Task<List<User>> GetAllAsync() => _repo.GetAllAsync();
-
-    public async Task<User> CreateAsync(CreateUserDto dto)
+    public async Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
+        var dto = request.Dto;
+
         var role = await _roleRepo.GetByNameAsync("User");
         if (role == null)
         {
@@ -49,17 +49,5 @@ public class UserService
 
         await _repo.AddAsync(user);
         return user;
-    }
-
-    public async Task<bool> DeleteAsync(Guid id)
-    {
-        var user = await _repo.GetByIdAsync(id);
-        if (user == null)
-        {
-            return false;
-        }
-
-        await _repo.DeleteAsync(user);
-        return true;
     }
 }

@@ -1,5 +1,6 @@
 using Application.Interfaces;
 using Domain.Entities;
+using Domain.Enums;
 using Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,14 +17,10 @@ public class PacketRepository(AppDbContext context) : IPacketRepository
 
     public async Task<Packet?> GetByIdAsync(Guid id) =>
         await context.Packets
-            .Include(p => p.PacketType)
-            .Include(p => p.PacketStatus)
             .FirstOrDefaultAsync(p => p.PacketId == id);
 
     public async Task<IEnumerable<Packet>> GetAllAsync() =>
         await context.Packets
-            .Include(p => p.PacketType)
-            .Include(p => p.PacketStatus)
             .ToListAsync();
 
     public async Task UpdateAsync(Packet packet)
@@ -40,5 +37,17 @@ public class PacketRepository(AppDbContext context) : IPacketRepository
             context.Packets.Remove(packet);
             await context.SaveChangesAsync();
         }
+    }
+
+    public async Task<List<Packet>> GetActivePacketsAsync()
+    {
+        return await context.Packets
+            .Where(p => EF.Property<int>(p, "_statusId") == PacketStatusEnum.Active.Value)
+            .ToListAsync();
+    }
+
+    public async Task SaveChangesAsync()
+    {
+        await context.SaveChangesAsync();
     }
 }

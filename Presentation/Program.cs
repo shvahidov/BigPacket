@@ -4,20 +4,12 @@ using Presentation.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Подключаем все слои
-builder.Services
-    .AddApplication()
-    .AddInfrastructureServices(builder.Configuration)
-    .AddPresentationLayer(builder.Configuration);
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddPresentation(builder.Configuration);
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+app.UsePresentation();
 
-app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllers();
 app.Run();

@@ -1,3 +1,4 @@
+using Application.DTOs;
 using Application.Features.Packets.Commands;
 using Application.Features.Packets.Queries;
 using MediatR;
@@ -25,13 +26,45 @@ public class PacketsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Create(CreatePacketCommand command)
         => Ok(await mediator.Send(command));
 
-    [HttpPut("{id}")]
+    [HttpPost("{id}/activate")]
     [Role("Admin")]
-    public async Task<IActionResult> Update(Guid id, UpdatePacketCommand command)
-        => Ok(await mediator.Send(command with { Id = id }));
+    public async Task<IActionResult> Activate(Guid id)
+    {
+        await mediator.Send(new ActivatePacketCommand(id));
+        return Ok("Packet activated");
+    }
 
-    [HttpDelete("{id}")]
+    [HttpPost("{id}/disable")]
     [Role("Admin")]
-    public async Task<IActionResult> Delete(Guid id)
-        => Ok(await mediator.Send(new DeletePacketCommand(id)));
+    public async Task<IActionResult> Disable(Guid id)
+    {
+        await mediator.Send(new DisablePacketCommand(id));
+        return Ok("Packet disabled");
+    }
+
+    [HttpPatch("{id}/end-date")]
+    [Role("Admin")]
+    public async Task<IActionResult> ChangeEndDate(Guid id, [FromBody] ChangePacketEndDateDto dto)
+    {
+        await mediator.Send(new ChangePacketEndDateCommand
+        {
+            Id = id,
+            NewEndDate = dto.NewEndDate
+        });
+
+        return Ok("End date updated");
+    }
+
+    [HttpPatch("{id}/type")]
+    [Role("Admin")]
+    public async Task<IActionResult> ChangeType(Guid id, [FromBody] ChangePacketTypeDto dto)
+    {
+        await mediator.Send(new ChangePacketTypeCommand
+        {
+            Id = id,
+            PacketTypeId = dto.PacketTypeId
+        });
+
+        return Ok("Packet type updated");
+    }
 }

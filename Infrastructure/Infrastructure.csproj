@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Hangfire.AspNetCore" Version="1.8.22" />
+      <PackageReference Include="Hangfire.PostgreSql" Version="1.20.13" />
       <PackageReference Include="MediatR" Version="8.1.0" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.19" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.19" />
@@ -30,10 +32,6 @@
 
     <ItemGroup>
       <EditorConfigFiles Remove=".editorconfig" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Persistence\Configurations\" />
     </ItemGroup>
 
 </Project>
